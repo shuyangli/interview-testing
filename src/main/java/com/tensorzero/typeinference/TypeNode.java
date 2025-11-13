@@ -1,4 +1,4 @@
-package com.interview.typeinference;
+package com.tensorzero.typeinference;
 
 /**
  * Represents nodes in the type tree, including primitives, tuples, functions, and type variables.

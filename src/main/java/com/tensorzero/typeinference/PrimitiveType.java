@@ -1,4 +1,4 @@
-package com.interview.typeinference;
+package com.tensorzero.typeinference;
 
 public class PrimitiveType extends TypeNode {
     // TODO: Implement this class
