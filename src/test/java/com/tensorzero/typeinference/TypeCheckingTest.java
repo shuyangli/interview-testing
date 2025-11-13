@@ -1,4 +1,4 @@
-package com.interview.typeinference;
+package com.tensorzero.typeinference;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -6,8 +6,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static com.interview.typeinference.TypeChecker.typeCheck;
-import static com.interview.typeinference.TypeFactory.*;
+import static com.tensorzero.typeinference.TypeChecker.typeCheck;
+import static com.tensorzero.typeinference.TypeFactory.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**

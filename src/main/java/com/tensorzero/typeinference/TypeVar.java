@@ -1,6 +1,6 @@
-package com.interview.typeinference;
+package com.tensorzero.typeinference;
 
-public class FunctionType extends TypeNode {
+public class TypeVar extends TypeNode {
     // TODO: Implement this class
 
     @Override

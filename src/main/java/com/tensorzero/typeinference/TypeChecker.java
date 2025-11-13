@@ -1,4 +1,4 @@
-package com.interview.typeinference;
+package com.tensorzero.typeinference;
 
 import java.util.List;
 
