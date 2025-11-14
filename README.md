@@ -18,57 +18,62 @@ This interview is divided into three progressive parts:
 
 Implement the four core type classes and their constructor functions:
 
-| Name       | Type Class      | `get_type_signature()` Format          |
+| Name       | Type Class      | `getTypeSignature()` Format          |
 | ---------- | --------------- | -------------------------------------- |
 | Primitives | `PrimitiveType` | `int`, `float`, `bool`, `str`          |
 | Tuple      | `TupleType`     | `(type1, type2, ...)`                  |
 | Function   | `FunctionType`  | `(param1, param2, ...) -> return_type` |
 | Generics   | `TypeVar`       | `T`, `U`, `V`, ...                     |
 
-You should make the tests pass. To run the tests, run `mvn test -Dtest=TypeSignaturesTest`.
+To run the tests, run `mvn test -Dtest=TypeSignaturesTest`.
 
 ### Part 2: Type Checking
 
-Implement `type_check(function_type, argument_types)` that validates whether provided arguments match a function's parameter types.
+Implement `TypeChecker.typeCheck(functionType, argumentTypes)` that validates whether provided arguments match a function's parameter types.
 
 #### Example
 
-```python
-# Function: (int, str) -> bool
-function_type = construct_function_type(
-    [construct_primitive_type("int"), construct_primitive_type("str")], construct_primitive_type("bool")
-)
-# Arguments: (int, str)
-argument_types = [construct_primitive_type("int"), construct_primitive_type("str")]
-assert type_check(function_type, argument_types) == True
+```java
+// Function: (int, str) -> bool
+FunctionType functionType = constructFunctionType(
+    List.of(constructPrimitiveType("int"), constructPrimitiveType("str")),
+    constructPrimitiveType("bool")
+);
+// Arguments: (int, str)
+List<TypeNode> argumentTypes = List.of(constructPrimitiveType("int"), constructPrimitiveType("str"));
+assertTrue(typeCheck(functionType, argumentTypes));
 ```
 
-```python
-# Function: (int, str) -> bool
-function_type = construct_function_type(
-    [construct_primitive_type("int"), construct_primitive_type("str")], construct_primitive_type("bool")
-)
-# Arguments: (int, int)
-argument_types = [construct_primitive_type("int"), construct_primitive_type("int")]
-assert type_check(function_type, argument_types) == False
+```java
+// Function: (int, str) -> bool
+FunctionType functionType = constructFunctionType(
+    List.of(constructPrimitiveType("int"), constructPrimitiveType("str")),
+    constructPrimitiveType("bool")
+);
+// Arguments: (int, int)
+List<TypeNode> argumentTypes = List.of(constructPrimitiveType("int"), constructPrimitiveType("int"));
+assertFalse(typeCheck(functionType, argumentTypes));
 ```
 
 You should make the tests pass. To run the tests, run `mvn test -Dtest=TypeCheckingTest`.
 
 ### Part 3: Type Inference
 
-Implement `infer_return_type(function_type, argument_types)` that type checks the arguments and infers concrete types for any generic type variables.
-Return the properly instantiated return type or `None` if type inference is not possible.
+Implement `TypeInference.inferReturnType(functionType, argumentTypes)` that type checks the arguments and infers concrete types for any generic type variables.
+Return the properly instantiated return type or `null` if type inference is not possible.
 
 #### Example
 
-```python
-# Function: (int) -> int
-function_type = construct_function_type([construct_primitive_type("int")], construct_primitive_type("int"))
-# Arguments: (int)
-argument_types = [construct_primitive_type("int")]
-# Inferred Return Type: int
-assert infer_return_type(function_type, argument_types).get_type_signature() == "int"
+```java
+// Function: (int) -> int
+FunctionType functionType = constructFunctionType(
+    List.of(constructPrimitiveType("int")),
+    constructPrimitiveType("int")
+);
+// Arguments: (int)
+List<TypeNode> argumentTypes = List.of(constructPrimitiveType("int"));
+// Inferred Return Type: int
+assertEquals("int", inferReturnType(functionType, argumentTypes).getTypeSignature());
 ```
 
 You should make the tests pass. To run the tests, run `mvn test -Dtest=TypeInferenceTest`.
